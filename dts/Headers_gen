@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export PATH=$PATH:~/openwrt/staging_dir/toolchain-aarch64_cortex-a72_gcc-11.3.0_musl/bin/
+
+Prefix=aarch64-openwrt-linux-
+KernelHeader=$PWD/KernelHeaders/
+
+cd ~/openwrt/build_dir/target-aarch64_cortex-a72_musl/linux-bcm27xx_bcm2711/linux-5.15.53
+	make ARCH=arm64  CROSS_COMPILE=$Prefix O=$KernelHeader mrproper;
+	make  ARCH=arm64  CROSS_COMPILE=$Prefix O=$KernelHeader defconfig;
+	make -j 8 ARCH=arm64  CROSS_COMPILE=$Prefix O=$KernelHeader modules_prepare;

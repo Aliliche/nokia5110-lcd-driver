@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export PATH=$PATH:/home/vicious/openwrt/staging_dir/toolchain-aarch64_cortex-a72_gcc-11.3.0_musl/bin/
+# Build the module
+	make ARCH=arm64 CROSS_COMPILE=aarch64-openwrt-linux-
+# Informations about it
+	modinfo test.ko
+
